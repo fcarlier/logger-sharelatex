@@ -1,9 +1,11 @@
 bunyan = require('bunyan')
+level_log = (process.env.NODE_SHARELATEX_LOG or "info").toLowerCase()
 
 module.exports = Logger =
 	initialize: (name) ->
 		@logger = bunyan.createLogger
 			name: name
+			level: "#{level_log}"
 			serializers: bunyan.stdSerializers
 		return @
 	info : ()->
